@@ -1,31 +1,34 @@
 
 let myLibrary= [
     {
-        title: "",
-        author: "",
-        pages: "",
+        title: "My Book",
+        author: "Me ",
+        pages: "200",
         read: true
     }
 ];
 
 
-function book(title, author, pages, read){
+function Book(title, author, pages, read){
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
-    this.info = function(){
-        return( title + " by " + author +", " + pages + "pages, " + read)
-    }
+
+    this.info = function() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read'}`;
+
 }
+
+
 
 function buildLibraryBox(array){
     const outputDiv = document.getElementById("output");
 
-    array.forEach(function(book){
+    array.forEach(function(Book){
         const tile = document.createElement("div");
 
-        tile.textContent= book.info();
+        tile.textContent= Book.info();
 
         outputDiv.appendChild(tile);
         });
@@ -63,3 +66,4 @@ document.getElementById("myForm").addEventListener("submit", function(event){
 
     document.getElementById("popupForm").style.display = "none";
 });
+}
