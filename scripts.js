@@ -12,27 +12,54 @@ function Book(title, author, pages, read) {
 }
 
 function buildLibraryBox(array) {
-  const outputDiv = document.getElementById("output");
+    const outputDiv = document.getElementById("output");
+  
+    // Clear existing content
+    outputDiv.innerHTML = "";
+  
+    array.forEach(function (book, index) {
+      const tile = document.createElement("div");
+      tile.classList.add("book-tile"); // Add a class for styling
+  
+      // Create HTML content for the book tile, including a button
+      tile.innerHTML = `
+        <h3>${book.title}</h3>
+        <p>Author: ${book.author}</p>
+        <p>Pages: ${book.pages}</p>
+        <p>${book.read ? 'Read' : 'Not Read'}</p>
+        <button class="readStatusBtn">Toggle Read Status</button>
+        <button class="deleteButton" data-index="${index}">Delete Book</button>
+      `;
+  
+      // Add the tile to the outputDiv
+      outputDiv.appendChild(tile);
+  
+      // Attach an event listener to the button
+      const toggleButton = tile.querySelector(".readStatusBtn");
+      toggleButton.addEventListener("click", function () {
+        // Toggle the "read" status when the button is clicked
+        book.read = !book.read;
+  
+        // Rebuild the library box to reflect the updated data
+        buildLibraryBox(array);
 
-  // Clear existing content
-  outputDiv.innerHTML = "";
+    
+      });
+      
+      const deleteButton = tile.querySelector(".deleteButton");
+      deleteButton.addEventListener("click", function () {
+        const bookIndex = parseInt(this.getAttribute("data-index"), 10);
 
-  array.forEach(function (book) {
-    const tile = document.createElement("div");
-    tile.classList.add("book-tile"); // Add a class for styling
+        array.splice(bookIndex, 1);
 
-    // Create HTML content for the book tile
-    tile.innerHTML = `
-      <h3>${book.title}</h3>
-      <p>Author: ${book.author}</p>
-      <p>Pages: ${book.pages}</p>
-      <p>${book.read ? 'Read' : 'Not Read'}</p>
-    `;
-
-    outputDiv.appendChild(tile);
-  });
-  outputDiv.classList.add("grid-layout");
-}
+        buildLibraryBox(array);
+      })
+    });
+  
+    // Add a class to the outputDiv to enable grid layout
+    outputDiv.classList.add("grid-layout");
+  }
+  
 
 // Function to open the form popup
 document.getElementById("openForm").addEventListener("click", function () {
