@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="scripts.js"></script>
 </head>
 <body>
-    <button id="openForm">Add Book</button>
-    
+    <div class="header">
+        <h1>The Library</h1>
+        <button id="openForm">Add Book</button>
+    </div>
     <div class="popup" id="popupForm">
         <form id="myForm">
             <label for="title">Title:</label>
@@ -31,9 +32,10 @@
         
             <input type="submit" value="Add Book">
         </form>
-      <button id="closeForm">Close</button>
+        <button id="closeForm">Close</button>
     </div>
-
+    
     <div id="output"></div>
+    <script src="scripts.js"></script>
 </body>
 </html>

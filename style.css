@@ -1,5 +1,5 @@
 .popup {
-  display: none;
+  display:none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,4 +8,84 @@
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+}
+
+.popup.show-popup{
+  display: block;
+}
+
+body{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#openForm{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  font-size: 30px;
+  padding: 10px;
+}
+#closeForm {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#popupForm form {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+#popupForm label {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+#popupForm input,
+#popupForm textarea,
+#popupForm checkbox {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+#popupForm input[type="submit"] {
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
+
+.book-tile {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.book-tile h3 {
+  color: #3498db;
+}
+
+.book-tile p {
+  margin-bottom: 5px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
 }
